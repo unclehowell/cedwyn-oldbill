@@ -333,7 +333,9 @@ if(location.hash==='#reopened'){reopen=true;$('#reopen').checked=true;$('#sw').c
 const PK=Object.keys(D.parties), gm=n=>{const a=Math.abs(n);if(a>=1e6)return '£'+(n/1e6).toFixed(a>=1e7?1:2).replace(/\.?0+$/,'')+'m';if(a>=1e3)return '£'+Math.round(n/1e3)+'k';return '£'+Math.round(n)};
 const rng=v=>`${gm(v.low)} – ${gm(v.high)}`;
 function comb(){const wrap=$('#combwrap'),svg=$('#comb');const W=Math.max(340,Math.min(940,wrap.clientWidth-8));const mob=W<560;
- const padL=6,padR=mob?62:96,UH=mob?150:190,LBL=mob?30:34,BAND=mob?86:110,LH=mob?150:190,LL=mob?96:120,top=LBL+6;
+ const padR=mob?62:96,UH=mob?150:190,LBL=mob?30:34,BAND=mob?86:110,LH=mob?150:190,LL=mob?96:120,top=LBL+6;
+ // #236 (6 Nov 2026): leave room on the left for the first upper label (text-anchor middle), so it is not clipped on mobile
+ const nG=Math.max(1,D.gains.length),hw0=String((D.gains[0]||{}).label||'').length*(mob?10.5:12)*0.56/2,padL=Math.max(6,Math.ceil((hw0+2-(W-padR)/(2*nG))/(1-1/(2*nG))));
  const y0=top+UH,ys=y0+8,y1=ys+BAND,y1b=y1+8;const H=y1b+LH+LL+6;
  const maxv=Math.max(...D.gains.map(g=>g.v.high),...D.losses.map(l=>l.v.high));const sc=v=>v/maxv*UH;const scl=v=>v/maxv*LH;
  const spanW=W-padL-padR;const G=D.gains,Ls=D.losses;
