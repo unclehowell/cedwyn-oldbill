@@ -193,7 +193,7 @@ def losses(G):
         alloc={'BP': 70, 'WGR': 30}, estimate=True, causation='to be proven',
         method=f'Fatal Accidents Act 1976: the statutory bereavement award (£15,120) for William\u2019s widow, plus two funerals at about £4,500 each today (estimate). High adds dependency for William\u2019s partner and three children: 2/3 of an assumed £15,000 net a year × 15 years to the children\u2019s majority, carried to 2026 £ by CPI (£{dep:,.0f}; earnings not on the record yet). Low nil (causation not established). Causation: to be proven.',
         inputs=[('Bereavement award', '£15,120'), ('Funerals', '2 × £4,500 (estimate)'), ('Dependency (high only)', f'£{dep:,.0f} (estimate)')],
-        facts=[('Mary died in March 1983.', S['d5475']), ('South Wales Echo, 2 Jun 1990: “Billy died suddenly this week”.', S['ev0290']), ('Probate calendar 1991: William Beverley Buckler, died 29 April 1990 (probable match).', S['ev0274'])],
+        facts=[('Mary died in March 1983.', S['d5475']), ('South Wales Echo, 2 Jun 1990: “Billy died suddenly this week”.', S['ev0290']), ('Probate calendar 1991: William Beverley (Billy) Buckler, died 29 April 1990.', S['ev0274'])],
         legal='Fatal Accidents Act 1976 ss.1A, 3; Law Reform (Miscellaneous Provisions) Act 1934 for the estates; causation by medical evidence.',
         sources=[S['faa'], S['ev0290'], S['ev0274'], S['d5475']])
     ex_mid = 60000 * x('cpi_2011', 'cpi_now'); ex_hi = 0.15 * gmid['BP']
